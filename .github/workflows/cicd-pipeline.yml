@@ -41,9 +41,7 @@ jobs:
         run: mvn install -DskipTests
 
       - name: Prepare native libs folder and copy library
-        run: |
-          mkdir -p target/libs
-          cp lib/libbisection.so target/libs/
+        run: cp lib/libbisection.so /usr/lib/
 
       - name: Run Tests with Testcontainers and Generate Coverage Report
         env:
