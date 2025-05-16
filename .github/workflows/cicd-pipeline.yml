@@ -43,7 +43,7 @@ jobs:
       - name: Prepare native libs folder and copy library
         run: |
           mkdir -p target/libs
-          cp path/to/libbisection.so target/libs/
+          cp lib/libbisection.so target/libs/
 
       - name: Run Tests with Testcontainers and Generate Coverage Report
         env:
