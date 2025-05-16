@@ -1,0 +1,118 @@
+1. Función cúbica con raíz en [1, 2]
+
+curl -X POST http://localhost:8080/api/bisection/native \
+  -H "Content-Type: application/json" \
+  -d '{
+    "function": "pow(x,3) - x - 2",
+    "lower": 1.0,
+    "upper": 2.0,
+    "tolerance": 0.0001,
+    "maxIterations": 100
+}'
+
+Output esperado:
+
+{
+  "root": 1.5214,
+  "iterations": x,
+  "convergence": "Convergido dentro de la tolerancia"
+}
+
+Output generado:
+
+{"root":1.52142333984375,"iterations":14,"convergence":"Convergido dentro de la tolerancia"}
+
+2. 2. Función cuadrática x^2 − 4 en [0, 3]
+
+curl -X POST http://localhost:8080/api/bisection/native \
+  -H "Content-Type: application/json" \
+  -d '{
+    "function": "pow(x, 2) - 4",
+    "lower": 0,
+    "upper": 3,
+    "tolerance": 0.00001,
+    "maxIterations": 50
+}'
+
+Output esperado:
+
+{
+  "root": 2.0000,
+  "iterations": x,
+  "convergence": "Convergido dentro de la tolerancia"
+}
+
+Output generado:
+
+{"root":1.9999980926513672,"iterations":19,"convergence":"Convergido dentro de la tolerancia"}
+
+3. Función seno sen(x) entre [3, 4] (raíz cerca de pi)
+
+curl -X POST http://localhost:8080/api/bisection/native \
+  -H "Content-Type: application/json" \
+  -d '{
+    "function": "sin(x)",
+    "lower": 3,
+    "upper": 4,
+    "tolerance": 0.00001,
+    "maxIterations": 50
+}'
+
+Output esperado:
+
+{
+  "root": 3.14159,
+  "iterations": x,
+  "convergence": "Convergido dentro de la tolerancia"
+}
+
+Output generado:
+
+{"root":3.1416015625,"iterations":10,"convergence":"Convergido dentro de la tolerancia"}
+
+4. Función con raíz múltiple x^3 en [-1, 1]
+
+curl -X POST http://localhost:8080/api/bisection/native \
+  -H "Content-Type: application/json" \
+  -d '{
+    "function": "pow(x, 3)",
+    "lower": -1,
+    "upper": 1,
+    "tolerance": 0.0001,
+    "maxIterations": 100
+}'
+
+Output esperado:
+
+{
+  "root": 0.0,
+  "iterations": x,
+  "convergence": "Convergido dentro de la tolerancia"
+}
+
+Output generado:
+
+{"root":0.0,"iterations":1,"convergence":"Convergido dentro de la tolerancia"}
+
+5. Función sin raíz en el intervalo x^2 + 1 en [0, 1] (debería fallar)
+
+curl -X POST http://localhost:8080/api/bisection/native \
+  -H "Content-Type: application/json" \
+  -d '{
+    "function": "pow(x, 2) + 1",
+    "lower": 0,
+    "upper": 1,
+    "tolerance": 0.0001,
+    "maxIterations": 50
+}'
+
+Output esperado:
+
+La función debe tener signos opuestos en los extremos.
+
+Output generado:
+
+La función debe tener signos opuestos en los extremos.
+
+Resultado test:
+Correcto: 5/5
