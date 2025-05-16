@@ -31,22 +31,20 @@ Este endpoint recibe los parámetros necesarios para calcular la raíz de una fu
 - **Descripción**: La tolerancia para la convergencia del algoritmo de bisección.
 - **Restricciones**: Debe ser un valor mayor o igual a `0.0000001`.
 - **Ejemplo**: `0.0001`
-- **Opcional**: Si no se especifica, se usa un valor por defecto en el servidor.
 
 #### `maxIterations` (Integer)
 - **Descripción**: El número máximo de iteraciones permitidas para encontrar la raíz.
 - **Restricciones**: Debe ser un valor entre `1` y `1000`.
 - **Ejemplo**: `100`
-- **Opcional**: Si no se especifica, se usa un valor por defecto en el servidor.
 
 ---
 
-## Ejemplo de solicitud
+## Ejemplo de solicitud método Java
 
 ### Solicitud `POST`
 
 ```bash
-curl -X POST http://localhost:8080/api/bisection \
+curl -X POST http://localhost:8080/api/bisection/java \
   -H "Content-Type: application/json" \
   -d '{
     "function": "pow(x,3) - x - 2",
@@ -57,5 +55,23 @@ curl -X POST http://localhost:8080/api/bisection \
 }'
 ```
 ```bash
-curl -X POST http://localhost:8080/api/bisection -H "Content-Type: application/json" -d "{\"function\":\"pow(x,3) - x - 2\",\"lower\":1.0,\"upper\":2.0,\"tolerance\":0.0001,\"maxIterations\":100}"
+curl -X POST http://localhost:8080/api/bisection/java -H "Content-Type: application/json" -d "{\"function\":\"pow(x,3) - x - 2\",\"lower\":1.0,\"upper\":2.0,\"tolerance\":0.0001,\"maxIterations\":100}"
+```
+## Ejemplo de solicitud método C (nativo)
+
+### Solicitud `POST`
+
+```bash
+curl -X POST http://localhost:8080/api/bisection/native \
+  -H "Content-Type: application/json" \
+  -d '{
+    "function": "pow(x,3) - x - 2",
+    "lower": 1.0,
+    "upper": 2.0,
+    "tolerance": 0.0001,
+    "maxIterations": 100
+}'
+```
+```bash
+curl -X POST http://localhost:8080/api/bisection/native -H "Content-Type: application/json" -d "{\"function\":\"pow(x,3) - x - 2\",\"lower\":1.0,\"upper\":2.0,\"tolerance\":0.0001,\"maxIterations\":100}"
 ```

@@ -1,0 +1,14 @@
+services:
+  ova-analisis:
+    image: joseloaiza01/ova-analisis:latest
+    container_name: ova-analisis
+    ports:
+      - "8080:8080"
+    profiles:
+      - app
+    networks:
+      - red-backend-app
+
+networks:
+  red-backend-app:
+    driver: bridge

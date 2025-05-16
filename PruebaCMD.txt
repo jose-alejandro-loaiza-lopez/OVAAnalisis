@@ -1,8 +1,10 @@
-Microsoft Windows [Versión 10.0.26100.3915]
+Microsoft Windows [Versión 10.0.26100.4061]
 (c) Microsoft Corporation. Todos los derechos reservados.
 
-C:\Users\josea>curl -X POST http://localhost:8080/api/bisection -H "Content-Type: application/json" -d "{\"function\":\"pow(x,3) - x - 2\",\"lower\":1.0,\"upper\":2.0,\"tolerance\":0.0001,\"maxIterations\":100}"
+C:\Users\josea>curl -X POST http://localhost:8080/api/bisection/native -H "Content-Type: application/json" -d "{\"function\":\"pow(x,3) - x - 2\",\"lower\":1.0,\"upper\":2.0,\"tolerance\":0.0001,\"maxIterations\":100}"
 {"root":1.52142333984375,"iterations":14,"convergence":"Convergido dentro de la tolerancia"}
-C:\Users\josea>curl -X POST http://localhost:8080/api/bisection -H "Content-Type: application/json" -d "{\"function\":\"pow(x,3) - x - 2\",\"lower\":1.0,\"upper\":2.0}"
-{"root":1.5213797092437744,"iterations":22,"convergence":"Convergido dentro de la tolerancia"}
+C:\Users\josea>curl -X POST http://localhost:8080/api/bisection/native -H "Content-Type: application/json" -d "{\"function\":\"pow(x,3) + pow(x,2) - x\",\"lower\":0.5,\"upper\":1.0,\"tolerance\":0.0001,\"maxIterations\":100}"
+{"root":0.6180419921875,"iterations":12,"convergence":"Convergido dentro de la tolerancia"}
+C:\Users\josea>curl -X POST http://localhost:8080/api/bisection/java -H "Content-Type: application/json" -d "{\"function\":\"pow(x,3) + pow(x,2) - x\",\"lower\":0.5,\"upper\":1.0,\"tolerance\":0.0001,\"maxIterations\":100}"
+{"root":0.6180419921875,"iterations":12,"convergence":"Convergido dentro de la tolerancia"}
 C:\Users\josea>
