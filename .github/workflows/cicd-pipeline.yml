@@ -88,8 +88,8 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t joseloaiza01/ova-analisis:latest .
-          docker push joseloaiza01/ova-analisis:latest
+          docker build -t joseloaiza01/bisection-service:latest .
+          docker push joseloaiza01/bisection-service:latest
 
   deploy:
     if: true
