@@ -1,6 +1,6 @@
 FROM openjdk:23-jdk-slim
 
-LABEL authors="joseloaiza01"
+LABEL authors="josea"
 
 # Instalar compilador y herramientas necesarias
 RUN apt-get update && apt-get install -y build-essential
@@ -23,4 +23,4 @@ RUN gcc -shared -z noexecstack -o libbisection.so bisection.o aritmetica.o
 # Copiar la librería a /usr/lib para que pueda cargarse automáticamente
 RUN mv libbisection.so /usr/lib/
 
-ENTRYPOINT ["java", "-jar", "target/bisection-method-1.0.0.jar"]
+ENTRYPOINT ["java", "-jar", "target/bisection-service-0.0.1-SNAPSHOT.jar"]
